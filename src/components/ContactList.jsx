@@ -6,15 +6,14 @@ const ContactList =(props)=>{
     const dellpasser=(id)=>{
         props.removeItem(id);
     }
-    const contact = useSelector(state => state.amount)
-    const renderContactList=contact.map((contact)=>{
+    const reduxState = useSelector(state => state);
+ 
+
+    const contactList = reduxState.amount.contacts;
+    const renderContactList=contactList.map((contact)=>{
         return(
             <div className="main">
-                <h2>contact List
-                    <Link to="/add">
-                    <button className="ui button blue right" >Add Contact</button>
-                    </Link>                
-                </h2>
+                
                 <ContactCard contact={contact} removeById={dellpasser} key={contact.id}/>
             </div>
         )
@@ -22,6 +21,11 @@ const ContactList =(props)=>{
     
     return(
         <div className="ui celled list">
+            <h2>contact List
+                    <Link to="/add">
+                    <button className="ui button blue right" >Add Contact</button>
+                    </Link>                
+                </h2>
            {renderContactList}
         </div>
     )

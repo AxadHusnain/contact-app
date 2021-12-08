@@ -1,16 +1,18 @@
 import { uuid } from "uuidv4";
-const contacts=[{
-    id:"",
-    name:"",
-    email:""
-
-}]
+const initialstate={
+    contacts:[]
+}
 
 
-const reducer=(state=contacts, action)=>{
+const reducer=(state=initialstate, action)=>{
+    console.log("reducer log", action)
     if(action.type==="update"){
-        return  ([...state,{id: uuid(), ...action.contact}])
-        
+        const arr = [...state.contacts,{id: uuid(), ...action.payload}];
+
+        return  {
+            ...state,
+            contacts: arr
+        }
     }
     else{
         return state

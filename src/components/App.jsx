@@ -40,15 +40,13 @@ function App() {
   return (
     <div className="ui container">
       {/* <Header/> */}
-
-      <Router>
+      <Link to="/add">add</Link> 
         <Routes>
           <Route path="/add" element={<AddContact />} />
           <Route path="/" element={<ContactList />} />
         </Routes>
         {/* <AddContact addContactHandler={addContactHandler} />
-      <ContactList contactss={contacts} removeItem={deleteItemHandler}/> */}
-      </Router>
+      <ContactList contactss={contacts} removeItem={deleteItemHandler}/> */} 
     </div>
   );
 }

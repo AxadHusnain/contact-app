@@ -4,6 +4,7 @@ import uuid from 'react-uuid'
 import AddContact from './AddContact';
 import ContactCard from './ContactCard';
 import ContactList from './ContactList';
+import Edit from './Edit';
 import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -44,6 +45,8 @@ function App() {
         <Routes>
           <Route path="/add" element={<AddContact />} />
           <Route path="/" element={<ContactList />} />
+          <Route path="/edit/:slug" element={<Edit />} />
+
         </Routes>
         {/* <AddContact addContactHandler={addContactHandler} />
       <ContactList contactss={contacts} removeItem={deleteItemHandler}/> */} 

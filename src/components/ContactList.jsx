@@ -2,19 +2,30 @@ import React from "react";
 import ContactCard from "./ContactCard";
 import {Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { actionCreators } from "../state";
+import { bindActionCreators } from "redux";
 const ContactList =(props)=>{
-    const dellpasser=(id)=>{
-        props.removeItem(id);
-    }
+    
     const reduxState = useSelector(state => state);
- 
-
     const contactList = reduxState.amount.contacts;
+    const dispatch= useDispatch();
+    const action=bindActionCreators(actionCreators,dispatch)
+    const deleteItemHandler=(id)=>{
+        const contactlist=contactList.filter((contact)=>{
+          return contact.id!==id;
+        });
+        //console.log("before deletion",contactlist)
+        
+        dispatch(actionCreators.deleteContacts(contactlist))
+       // console.log("after deletion",contactlist)
+      }
+
     const renderContactList=contactList.map((contact)=>{
         return(
             <div className="main">
                 
-                <ContactCard contact={contact} removeById={dellpasser} key={contact.id}/>
+                <ContactCard contact={contact} removeById={deleteItemHandler} key={contact.id}/>
             </div>
         )
     })

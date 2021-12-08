@@ -14,6 +14,11 @@ const reducer=(state=initialstate, action)=>{
             contacts: arr
         }
     }
+    else if(action.type==='delete'){
+        return{
+            contacts:action.payload
+        }
+    }
     else{
         return state
     }
